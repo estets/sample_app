@@ -6,6 +6,7 @@ gem 'rails', '3.0.10'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'gravatar_image_tag'
 
 group :development do
   gem 'rspec-rails'
@@ -19,6 +20,7 @@ group :test do
   gem 'autotest'
   gem 'autotest-rails-pure'
   gem 'autotest-growl'
+  gem 'factory_girl_rails'
 end
 
 # Use unicorn as the web server
