@@ -21,6 +21,7 @@ group :test do
   gem 'autotest-rails-pure'
   gem 'autotest-growl'
   gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 # Use unicorn as the web server

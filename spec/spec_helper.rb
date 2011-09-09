@@ -1,4 +1,5 @@
 require 'spork'
+require 'database_cleaner'
 
 Spork.prefork do
   # Loading more in this block will cause your tests to run faster. However, 
@@ -28,6 +29,10 @@ Spork.prefork do
     # examples within a transaction, comment the following line or assign false
     # instead of true.
     config.use_transactional_fixtures = true
+
+    config.before(:suite) do
+      DatabaseCleaner.clean_with(:truncation)
+    end
   end
 end
 
