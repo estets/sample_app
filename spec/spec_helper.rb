@@ -29,12 +29,19 @@ Spork.prefork do
     # examples within a transaction, comment the following line or assign false
     # instead of true.
     config.use_transactional_fixtures = true
+    config.use_instantiated_fixtures  = false
 
     config.before(:suite) do
+      puts "\n Cleaning database \n"
       DatabaseCleaner.clean_with(:truncation)
     end
+  end
+
+  def test_sign_in(user)
+    controller.sign_in(user)
   end
 end
 
 Spork.each_run do
+  Dir["#{Rails.root}/app/**/*.rb"].each { |f| load f }
 end
