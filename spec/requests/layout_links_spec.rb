@@ -65,4 +65,22 @@ describe "LayoutLinks" do
                                          :content => "Profile")
     end
   end
+
+  describe "delete link" do
+    before(:each) do
+      @user = Factory(:user)
+      integration_sign_in @user
+    end
+
+    it "should not appear for non-admin users" do
+      visit users_path
+      response.should_not have_selector("a", 'data-method' => "delete", :content => "delete")
+    end
+
+    it "should appear for admin users" do
+      @user.toggle!(:admin)
+      visit users_path
+      response.should have_selector("a", 'data-method' => "delete", :content => "delete")
+    end
+  end
 end
